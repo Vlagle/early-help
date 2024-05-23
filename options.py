@@ -233,6 +233,7 @@ class yesOrNoOption(discord.ui.View):
         transcript_file = discord.File(io.BytesIO(transcript.encode()),
                                        filename=f"transcript-{tchannel.name}_{tchannel.id}.html") 
         transcript_message = await lchannel.send(file=transcript_file)
+        
         tauthor = await bot.fetch_user(int(ticketInfo[1]))
         embed2 = discord.Embed(title=f'[Внутрисерверная] Заявка сохранена и закрыта / The application has been saved and closed', description=f'Заявка была закрыта, сохранена и удалена участником: {author.mention}. / A open ticket has been marked as closed by {author.mention}, it has been logged and deleted.', color=embedColor)
         embed2.set_thumbnail(url="https://static-00.iconduck.com/assets.00/memo-emoji-1948x2048-bgnk0vsq.png")
@@ -242,14 +243,14 @@ class yesOrNoOption(discord.ui.View):
         embed2.add_field(name="**__Author:__**", value=f"{tauthor.mention}", inline=True)
         embed2.add_field(name="**__Squadron/qestion:__**", value=f"{ticketInfo[4]}", inline=True)
         embed2.add_field(name="**__ID автора:__**", value=f"{tauthor.id}", inline=True)
-        if dmTicketCopies == False:    # Дублирование автору заявки
+        if dmTicketCopies == True:    # Дублирование автору заявки
             try:
                 transcript_file1 = discord.File(io.BytesIO(transcript.encode()),
                                        filename=f"transcript-{tchannel.name}_{tchannel.id}.html") 
                 transcript_message1 = await tauthor.send(file=transcript_file1)
                 embed3 = discord.Embed(title="Ticket Copy", description=f"Hi {tauthor.mention}!\n Thank you for creating a ticket with us. Attached to this message is a copy of your ticket for your records.\n\nPlease note, any media sent in your ticket will not load in the copy after a couple of days.\n \n ", color=embedColor)
                 embed3.add_field(name="**__Jump/Download Link:__**", value=f"{transcript_message1.jump_url}", inline=True)
-                transcript_url1 = ("https://webthedev.me/ticketviewer/?url="+ transcript_message1.attachments[0].url)
+                transcript_url1 = ("http://v927477t.beget.tech/chat-exporter/?url="+ transcript_message1.attachments[0].url)
                 embed3.add_field(name="**__View Link:__**", value=f"[Click here!]({transcript_url1})", inline=True)
                 embed3.set_thumbnail(url="https://static-00.iconduck.com/assets.00/memo-emoji-1948x2048-bgnk0vsq.png")
                 try:
@@ -263,8 +264,8 @@ class yesOrNoOption(discord.ui.View):
             pass
         embed2.add_field(name="**__Время создания/Time created:__**", value=f"{ticketInfo[3]}", inline=False)
         embed2.add_field(name="**__Сохраненная переписка:__**", value=f"\n{transcript_message.jump_url}", inline=True)
-        transcript_url = ("https://webthedev.me/ticketviewer/?url="+ transcript_message.attachments[0].url)
-        # embed2.add_field(name="**__Ссылка:__**", value=f"\n[Click here!]({transcript_url})", inline=True)
+        transcript_url = ("http://v927477t.beget.tech/chat-exporter/?url="+ transcript_message.attachments[0].url)
+        embed2.add_field(name="**__Ссылка:__**", value=f"\n[Click here!]({transcript_url})", inline=True)
         try:
             message3 = await syslogc.send(embed=embed2)
         except discord.HTTPException:

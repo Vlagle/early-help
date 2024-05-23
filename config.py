@@ -16,7 +16,7 @@ debugLogSendID = 1235267502313967676                                #ID of the B
 
 #Ticket Creation/Options Config:#
 IDOfChannelToSendTicketCreationEmbed = 1236028561136291870             #ID of the Channel to send the Create a ticket embed to
-IDofMessageForTicketCreation = 1236627459903066112                       #This variable was automatically adjusted.
+IDofMessageForTicketCreation = 1236645848327389275                       #This variable was automatically adjusted.
 activeTicketsCategoryID = 1236028646733643879                     #ID of the active tickets category
 onHoldTicketsCategoryID = 1235298152261746750                           #ID of the onhold tickets category
 archivedTicketsCategoryID = 1235298217537699880             #ID of the archived tickets category

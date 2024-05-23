@@ -9,6 +9,28 @@ from bot import *
 from options import *
 
 
+class TicketCreation(discord.ui.View):
+
+  @discord.ui.button(label="Подать заявку (вопрос) / Submit an application (question)",
+                     emoji="📩",
+                     style=discord.ButtonStyle.blurple)
+  async def presscreate(self, interaction: discord.Interaction,
+                        button: discord.ui.button):
+    author = interaction.user
+    guild = interaction.guild
+    
+    embed2 = discord.Embed(
+          description=
+          f'\nПривет, {author.name}! Выберите полк, в который хотите подать заявку или пункт с вопросом к руководству. \n \n Hi {author.name}! Select the regiment you want to apply to or the point with a question to the management.\n',
+          color=embedColor)
+    embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
+      #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
+    await interaction.response.send_message(embed=embed2,
+                                              view=TicketCreationMenuUI(),
+                                              ephemeral=True)
+
+
+
 class TicketCreationMenu(discord.ui.Select):
 
   def __init__(self):
@@ -356,66 +378,6 @@ class TicketCreationModal(discord.ui.Modal, title=f"Заявка в полк (в
     if channelPerms[ticketType] == (994215060052381706, 1213575945991102504, 1230216099228942489):   #Для вопросов
         
       await tchannel.send(f'{author.mention}, задайте свой вопрос в этом канале. / Ask your question in this channel.')
-
-class TicketCreation(discord.ui.View):
-
-  @discord.ui.button(label="Подать заявку (вопрос) / Submit an application (question)",
-                     emoji="📩",
-                     style=discord.ButtonStyle.blurple)
-  async def presscreate(self, interaction: discord.Interaction,
-                        button: discord.ui.button):
-    author = interaction.user
-    guild = interaction.guild
-    if multipleTicketsAllowed == False:
-      connection = TicketData.connect()
-      cursor = TicketData.cursor(connection)
-      allTickets = []
-      allTickets = TicketData.getall(cursor, allTickets)
-      alreadyOpened = False
-      for tickets in allTickets:
-        if (int(tickets[1])) == author.id:
-          if (str(tickets[5])) != ("Archived") and (str(
-              tickets[4])) != ticketTypeAllowedToCreatePrivateChannels:
-            alreadyOpened = True
-            activeChannel = int(tickets[0])
-            break
-          else:
-            pass
-        else:
-          pass
-      if alreadyOpened == True:
-        achannel = get(guild.channels, id=activeChannel)
-        embed2 = discord.Embed(
-            description=
-            f"You can't have more than one ticket open at a time! Please close your current ticket before opening a new one.",
-            color=embedColor)
-        embed2.add_field(name="**__Open Tickets:__**",
-                         value=f"{achannel.mention}")
-        embed2.set_author(name=f'{author}',
-                          icon_url=f'{author.display_avatar}')
-        #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
-        await interaction.response.send_message(embed=embed2, ephemeral=True)
-      else:
-        embed2 = discord.Embed(
-            description=
-            f'\nПривет, {author.name}! Выберите полк, в который хотите подать заявку или пункт с вопросом к руководству. \n \n Hi {author.name}! Select the regiment you want to apply to or the point with a question to the management.\n',
-            color=embedColor)
-        embed2.set_author(name=f'{author}',
-                          icon_url=f'{author.display_avatar}')
-        #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
-        await interaction.response.send_message(embed=embed2,
-                                                view=TicketCreationMenuUI(),
-                                                ephemeral=True)
-    else:
-      embed2 = discord.Embed(
-          description=
-          f'\nПривет, {author.name}! Выберите полк, в который хотите подать заявку или пункт с вопросом к руководству. \n \n Hi {author.name}! Select the regiment you want to apply to or the point with a question to the management.\n',
-          color=embedColor)
-      embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
-      #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
-      await interaction.response.send_message(embed=embed2,
-                                              view=TicketCreationMenuUI(),
-                                              ephemeral=True)
 
 
 x = dict()
