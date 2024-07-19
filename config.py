@@ -25,7 +25,8 @@ OptionsDict = {
     "Option 1": ("EARLY", "early", "EARLY - для ежедневных полковых боёв \n EARLY - for squadron battles "),                                      #This is the ticket options dictionary. It defines the different types of tickets that users can create.
     "Option 2": ("E4RLY", "e4rly", "E4RLY - русско-язычный полк для фарма техники и полковых боев"),                                #A ticket option definition should look something like this:  
     "Option 3": ("ENRLY", "enrly", "ENRLY - english-speaking squadron for farming equipment and squadron battles") ,
-    "Option 4": ("Вопрос руководству / Question to the management", "qestion", "Вопрос руководству / Question to the management.") 
+    "Option 4": ("Вопрос руководству / Question to the management", "qestion", "Вопрос руководству / Question to the management."),
+    "Option 5": ("Отряд / team", "team", "Сбор отряда для полковых боев. Только после согласованеия с руководством или офицерами.") 
     #"Option #": ("Title of Option", "Type of Option", "Description of Option")
 }                                                                                                             #Add a comma after every option definition except for the last one. 
                                                                                                               #If you only have one option then no comma is needed.
@@ -35,7 +36,8 @@ channelPerms = {                                                                
     "early": (994215060052381706, 994226835795746867),                                                                     #This dictionary defines what roles will have access to each type of Ticket Channel
     "e4rly": (994215060052381706, 1178285446158094386, 1213575945991102504),                                           #Each type can support multiple role IDS
     "enrly": (994215060052381706, 1230216013195513928, 1230216099228942489) ,
-    "qestion": (994215060052381706, 1213575945991102504, 1230216099228942489)
+    "qestion": (994215060052381706, 1213575945991102504, 1230216099228942489),
+    "team": (994215060052381706)
   
 }                                                                                                                         #"Type of Option":(ROLEID1, ROLEID2)
                                                                                                           #Add a comma after every option definition except for the last one. 
