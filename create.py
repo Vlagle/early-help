@@ -381,7 +381,7 @@ class TicketCreationModal(discord.ui.Modal, title=f"Заявка в полк (в
     
     if channelPerms[ticketType] == (994215060052381706):   #Для отряда
         
-      await tchannel.send(f'{author.mention}, добавьте игроков в свой отряд. Для этого необходимо получить роль <@1262847259754631320>')
+      await tchannel.send(f'{author.mention}, добавьте игроков в свой отряд. Для этого необходимо получить роль <@&1262847259754631320>')
 
 
 x = dict()
