@@ -158,11 +158,6 @@ class renameChannelModal(discord.ui.Modal, title="Переименовать / R
             await tchannel.edit(name=self.children[0].value)
             await interaction.response.send_message(embed=embed2, ephemeral=True)
 
-class renameChannelModal1(discord.ui.Modal, title="Переименовать / Rename"):
-    
-    async def on_submit(self, interaction: discord.Interaction):
-        tchannel = interaction.channel
-        author = interaction.user
         
 
     
