@@ -210,7 +210,7 @@ class embedButtons(discord.ui.View):
           #embed3.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
           try:
             await interaction.response.send_message(embed=embed3,
-                                                    ephemeral=True,
+                                                    ephemeral=False,
                                                     view=optionsMenu())
           except discord.HTTPException:
             await interaction.response.send_message(
