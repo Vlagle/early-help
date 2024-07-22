@@ -211,23 +211,16 @@ class optionsMenu(discord.ui.View):
         author = interaction.user
         embed6 = discord.Embed(description="Вы уверены, что хотите закрыть этот билет? В результате заявка будет удалена. \n\n Are you sure that you want to close this ticket? This will result in the ticket being deleted.", color=embedColor)
         embed6.set_author(name=f'{author}', icon_url=author.display_avatar)
-        await interaction.message.delete()
+        
         #embed6.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
         try:
             await interaction.response.edit_message(embed=embed6, view=yesOrNoOption(timeout=None))
-            
-
+            await interaction.message.delete()
         except discord.HTTPException:
             await interaction.response.edit_message("Something weird happened here, try again.")
 
     @discord.ui.button(label="Закрыть / Close", emoji="👥", style=discord.ButtonStyle.gray)
     async def close(self, interaction:discord.Interaction, button: discord.ui.button):
-        await interaction.response.send_modal(renameChannelModal1())
-        author = interaction.user
-        embed2 = discord.Embed(description=f'Вы можете нажать на кнопку только один раз! / You can only select a button once! \n\nСообщение будет удалено через 30 секунд. / The message will be deleted after 30 seconds.', color=embedColor)
-        embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
-        await interaction.edit_original_response(embed=embed2, view=None)
-        await asyncio.sleep(30)
         await interaction.message.delete()
 
 
