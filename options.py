@@ -214,7 +214,7 @@ class optionsMenu(discord.ui.View):
     @discord.ui.button(label="Закрыть / Close", emoji="👥", style=discord.ButtonStyle.gray)
     async def button_callback(self, button, interaction):
         
-        await asyncio.sleep(30)
+        
         await interaction.message.delete()
 
    
