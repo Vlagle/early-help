@@ -213,9 +213,10 @@ class optionsMenu(discord.ui.View):
 
     @discord.ui.button(label="Закрыть / Close", emoji="👥", style=discord.ButtonStyle.gray)
     async def button_callback(self, button, interaction):
-        
-        
-        await interaction.message.delete()
+        async def clear(ctx, amount=5):
+        channel = ctx.message.channel
+        messages = await channel.history(limit=amount + 1).flatten()
+        await channel.delete_messages(messages)
 
    
 
