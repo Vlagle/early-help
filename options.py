@@ -189,6 +189,7 @@ class optionsMenu(discord.ui.View):
         embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
         #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')  
         await interaction.edit_original_response(embed=embed2, view=None)
+        await interaction.message.delete()
         
    
     @discord.ui.button(label="Сохранить и удалить/Save and delete", emoji="📝", style=discord.ButtonStyle.green)
