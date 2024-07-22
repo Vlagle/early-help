@@ -211,6 +211,16 @@ class optionsMenu(discord.ui.View):
         except discord.HTTPException:
             await interaction.response.edit_message("Something weird happened here, try again.")
 
+    @discord.ui.button(label="Закрыть / Close", emoji="👥", style=discord.ButtonStyle.gray)
+    async def button_callback(self, button, interaction):
+        author = interaction.user
+        embed2 = discord.Embed(description=f'Вы можете нажать на кнопку только один раз! / You can only select a button once! \n\nСообщение будет удалено через 30 секунд. / The message will be deleted after 30 seconds.', color=embedColor)
+        embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
+        #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')  
+        await interaction.edit_original_response(embed=embed2, view=None)
+        await asyncio.sleep(30)
+        await interaction.message.delete()
+
    
 
 
