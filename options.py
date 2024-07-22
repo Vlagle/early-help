@@ -208,18 +208,19 @@ class optionsMenu(discord.ui.View):
         #embed6.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
         try:
             await interaction.response.edit_message(embed=embed6, view=yesOrNoOption(timeout=None))
+            await asyncio.sleep(30)
+            await interaction.message.delete()
         except discord.HTTPException:
             await interaction.response.edit_message("Something weird happened here, try again.")
 
     @discord.ui.button(label="Закрыть / Close", emoji="👥", style=discord.ButtonStyle.gray)
-    
-    async def clear(ctx, amount=5):
-        channel = ctx.message.channel
-        messages = await channel.history(limit=amount + 1).flatten()
-        await channel.delete_messages(messages)
-
-   
-
+    async def close(self, interaction:discord.Interaction, button: discord.ui.button):
+        author = interaction.user
+        embed2 = discord.Embed(description=f'Вы можете нажать на кнопку только один раз! / You can only select a button once! \n\nСообщение будет удалено через 30 секунд. / The message will be deleted after 30 seconds.', color=embedColor)
+        embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
+        await interaction.edit_original_response(embed=embed2, view=None)
+        await asyncio.sleep(30)
+        await interaction.message.delete()
 
 
 class yesOrNoOption(discord.ui.View):
