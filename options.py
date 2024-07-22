@@ -215,7 +215,7 @@ class optionsMenu(discord.ui.View):
         #embed6.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')
         try:
             await interaction.response.edit_message(embed=embed6, view=yesOrNoOption(timeout=None))
-            await interaction.message.delete()
+            
         except discord.HTTPException:
             await interaction.response.edit_message("Something weird happened here, try again.")
 
