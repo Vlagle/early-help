@@ -169,8 +169,7 @@ class optionsMenu(discord.ui.View):
         embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
         #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')  
         await interaction.edit_original_response(embed=embed2, view=None)
-    async def cancel_callback(self, button: discord.ui.Button, interaction: discord.Interaction):
-    await interaction.message.delete()
+    
 
     @discord.ui.button(label="Удалить участника/Remove a member", emoji="👋", style=discord.ButtonStyle.gray)
     async def removemember(self, interaction:discord.Interaction, button: discord.ui.button):
