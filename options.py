@@ -158,6 +158,9 @@ class renameChannelModal(discord.ui.Modal, title="Переименовать / R
             await tchannel.edit(name=self.children[0].value)
             await interaction.response.send_message(embed=embed2, ephemeral=True)
 
+class closed (discord.ui.Modal, title="Закрыть / Close"):
+    
+
     
 class optionsMenu(discord.ui.View):
     
@@ -209,7 +212,7 @@ class optionsMenu(discord.ui.View):
             await interaction.response.edit_message("Something weird happened here, try again.")
 
     @discord.ui.button(label="Закрыть окно/Close window", emoji="❌", style=discord.ButtonStyle.red)
-    async def rename(self, button: discord.ui.button):
+    async def closed(self, interaction:discord.Interaction, button: discord.ui.button):
         author = interaction.user
         embed2 = discord.Embed(description=f'Вы можете нажать на кнопку только один раз! / You can only select a button once! \n\nСообщение будет удалено через 30 секунд. / The message will be deleted after 30 seconds.', color=embedColor)
         embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
