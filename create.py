@@ -381,7 +381,33 @@ class TicketCreationModal(discord.ui.Modal, title=f"Заявка в полк (в
     
     if channelPerms[ticketType] == (994215060052381706):   #Для отряда
         
-      await tchannel.send(f'{author.mention}, добавьте игроков в свой отряд. Для этого необходимо получить роль <@&1262847259754631320>')
+      class Counter (discord.ui.View):
+        @discord.ui.button(label="Добавить участника/Add a member", emoji="👥", style=discord.ButtonStyle.gray)
+        async def addmember(self, interaction:discord.Interaction, button: discord.ui.button):
+        await interaction.response.send_modal(addMemberModal())
+        author = interaction.user
+        embed2 = discord.Embed(description=f'You can only push a button once!', color=embedColor)
+        embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
+        #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')  
+        await interaction.edit_original_response(embed=embed2, view=None)
+        await asyncio.sleep(30)
+        await interaction.message.delete()
+
+        @discord.ui.button(label="Удалить участника/Remove a member", emoji="👋", style=discord.ButtonStyle.gray)
+        async def removemember(self, interaction:discord.Interaction, button: discord.ui.button):
+        await interaction.response.send_modal(removeMemberModal())
+        author = interaction.user
+        embed2 = discord.Embed(description=f'You can only push a button once!', color=embedColor)
+        embed2.set_author(name=f'{author}', icon_url=f'{author.display_avatar}')
+        #embed2.set_footer(text=f"{footerOfEmbeds} | {bot.user.id}", icon_url=f'{bot.user.display_avatar}')  
+        await interaction.edit_original_response(embed=embed2, view=None)
+        await asyncio.sleep(30)
+        await interaction.message.delete()
+      
+
+      view = Counter()
+      await tchannel.send(f'{author.mention}, добавьте игроков в свой отряд. Для этого необходимо получить роль <@&1262847259754631320>' , view=view)
+
 
 
 x = dict()
