@@ -352,7 +352,7 @@ async def options(interaction: discord.Interaction):
     guild = interaction.guild
     author = interaction.user
     tchannel = interaction.channel
-    roleList = []
+    roleList = [994215060052381706, 994226835795746867, 1178285446158094386, 1213575945991102504, 1230216013195513928, 1230216099228942489]
     permissionGranted = False
     for roleids in channelPerms.values():
       roleList.append(roleids)
