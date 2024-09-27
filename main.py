@@ -345,7 +345,7 @@ async def self(interaction: discord.Interaction, reason: str = 'Unspecified'):
     print(text)
 
 
-@ticket.command(name="options",
+@ticket.command(name="pipi",
                 description="Показать опции канала с заявкой/Displays the options for a ticket channel")
 async def options(interaction: discord.Interaction):
   try:
