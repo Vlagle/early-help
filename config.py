@@ -63,7 +63,7 @@ def get_token():
     return (data['BotToken'])
 
 
-firstRun = False               #This variable was automatically adjusted.
+firstRun = True               #This variable was automatically adjusted.
 
 
 
