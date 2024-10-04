@@ -15,8 +15,8 @@ databaseName = 'tickets.db'                                          #Leave set 
 debugLogSendID = 1235267502313967676                                #ID of the Bot Owner to send debug information to
 
 #Ticket Creation/Options Config:#
-IDOfChannelToSendTicketCreationEmbed = 1236028561136291870             #ID of the Channel to send the Create a ticket embed to
-IDofMessageForTicketCreation = 1236645848327389275                       #This variable was automatically adjusted.
+IDOfChannelToSendTicketCreationEmbed = 1236028561136291870             #ID of the Channel to send the Create a ticket embed to   
+IDofMessageForTicketCreation = 1291813263314784369                       #This variable was automatically adjusted.    1236645848327389275   ЭТО АЙДИ СООБЩЕНИЯ СТАРОГО 
 activeTicketsCategoryID = 1236028646733643879                     #ID of the active tickets category
 onHoldTicketsCategoryID = 1235298152261746750                           #ID of the onhold tickets category
 archivedTicketsCategoryID = 1235298217537699880             #ID of the archived tickets category
